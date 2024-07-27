@@ -42,6 +42,13 @@ dotenv.config()
 
 const sendmess=async(req,res)=>{
     const {email,message,name}=req.body;
+
+    if (!email || !message || !name){
+       return res.status(205).json({
+        success:false,
+        msg:"Please Enter all field"
+       })
+    }
       let config={
        service:'gmail',
        auth:{
